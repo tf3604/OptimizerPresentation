@@ -19,7 +19,7 @@ with CustomerCount as
 select c.CustomerID, c.FirstName, c.LastName, cc.NbrOrders
 from CorpDB.dbo.Customer c
 inner join CustomerCount cc on c.CustomerID = cc.CustomerId
-where c.State = 'IA';
+where c.State = 'SD';
 
 -- Get an estimated query plan for the following query.
 -- With a large input from Customer (no predicate), SQL Server decides to first aggregate out of OrderHeader,

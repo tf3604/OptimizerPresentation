@@ -21,7 +21,7 @@ option (recompile, querytraceon 8605);
 -- Query with a WHERE clause.
 select c.CustomerID, c.FirstName, c.LastName, c.Address, c.City, c.State
 from CorpDB.dbo.Customer c
-where c.State = 'IA'
+where c.State = 'SD'
 option (recompile, querytraceon 8605);
 
 -- Query with a WHERE clause (LIKE).
@@ -53,7 +53,7 @@ option (recompile, querytraceon 8605);
 -- Query with a DISTINCT.
 select distinct c.FirstName, c.LastName
 from CorpDB.dbo.Customer c
-where c.State = 'IA'
+where c.State = 'SD'
 option (recompile, querytraceon 8605);
 
 -- Query with a UNION.
@@ -127,7 +127,7 @@ where oh.CustomerId in
 (
 	select c.CustomerId
 	from CorpDB.dbo.Customer c
-	where c.State = 'IA'
+	where c.State = 'SD'
 )
 option (recompile, querytraceon 8605, querytraceon 8606);
 
@@ -141,7 +141,7 @@ inner join
 	from CorpDB.dbo.OrderHeader oh
 	inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerId
 ) CustomerOrderView on od.OrderId = CustomerOrderView.OrderId
-where CustomerOrderView.State = 'IA'
+where CustomerOrderView.State = 'SD'
 option (maxdop 1, recompile, querytraceon 8605, querytraceon 8606);
 
 -- Predicate pushdown
@@ -149,7 +149,7 @@ option (maxdop 1, recompile, querytraceon 8605, querytraceon 8606);
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'IA'
+where c.State = 'SD'
 option (recompile, querytraceon 8605, querytraceon 8606);
 
 -- Foreign key table removal
@@ -178,7 +178,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'IA'
+where cust.State = 'SD'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId

@@ -50,14 +50,14 @@
           <FullPath>02-ParsingAndBinding.sql</FullPath>
         </FileNode>
         <FileNode Name="03-TrivialPlans.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>03-TrivialPlans.sql</FullPath>
         </FileNode>
         <FileNode Name="04-PlanCache.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>04-PlanCache.sql</FullPath>
         </FileNode>
@@ -80,20 +80,20 @@
           <FullPath>07-OptimizerInfo.sql</FullPath>
         </FileNode>
         <FileNode Name="08-Simplification.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>08-Simplification.sql</FullPath>
         </FileNode>
         <FileNode Name="09-AggregatePushdown.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>09-AggregatePushdown.sql</FullPath>
         </FileNode>
         <FileNode Name="10-TransformationStats.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>10-TransformationStats.sql</FullPath>
         </FileNode>

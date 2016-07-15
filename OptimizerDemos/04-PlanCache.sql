@@ -26,7 +26,7 @@ go
 select *
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
-where c.State = 'IA'
+where c.State = 'SD'
 and c.FirstName = 'Mary';
 go
 
@@ -47,7 +47,7 @@ go
 select *
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
-where c.State = 'IA'
+where c.State = 'SD'
 and c.FirstName = 'Mary';
 go
 set quoted_identifier on;

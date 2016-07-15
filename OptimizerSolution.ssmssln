@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# SQL Server Management Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 13.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "OptimizerDemos", "OptimizerDemos\OptimizerDemos.ssmssqlproj", "{EDC74975-A126-4ED8-9719-9560E4994EF6}"
 EndProject
 Global
@@ -8,8 +10,8 @@ Global
 		Default|Default = Default|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D271F7E7-3F7E-4327-BCF7-70861F9B3358}.Default|Default.ActiveCfg = Default
 		{EDC74975-A126-4ED8-9719-9560E4994EF6}.Default|Default.ActiveCfg = Default
+		{9F8E7680-0B8C-4216-9946-6470FB062AB6}.Default|Default.ActiveCfg = Default
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
