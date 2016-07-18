@@ -38,14 +38,14 @@
           <FullPath>00-Prep.sql</FullPath>
         </FileNode>
         <FileNode Name="01-SemiJoins.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>01-SemiJoins.sql</FullPath>
         </FileNode>
         <FileNode Name="02-ParsingAndBinding.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>02-ParsingAndBinding.sql</FullPath>
         </FileNode>
@@ -62,14 +62,14 @@
           <FullPath>04-PlanCache.sql</FullPath>
         </FileNode>
         <FileNode Name="05-IndexIntersection.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>05-IndexIntersection.sql</FullPath>
         </FileNode>
         <FileNode Name="06-BushyTrees.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>06-BushyTrees.sql</FullPath>
         </FileNode>

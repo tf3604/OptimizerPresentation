@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
 -- Feel free to use this code in any way you see fit, but do so at your own risk.
--- Version 1.0.0
+-- Version 1.0.1
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 -----------------------------------------------------------------------------------------------------------------------
 use CorpDB;
