@@ -170,15 +170,15 @@ go
 -----------------------------------------------------------------------------------------------------------------------
 -- Insert query of interest here
 -----------------------------------------------------------------------------------------------------------------------
-with IowaCustomers as
+with CustomersOfInterest as
 (
 	select c.CustomerID, c.FirstName, c.LastName
 	from CorpDB.dbo.Customer c
 	where c.State = 'SD'
 )
-select oh.OrderId, oh.OrderDate, ic.FirstName, ic.LastName
+select oh.OrderId, oh.OrderDate, c.FirstName, c.LastName
 from CorpDB.dbo.OrderHeader oh
-inner join IowaCustomers ic on oh.CustomerId = ic.CustomerID
+inner join CustomersOfInterest c on oh.CustomerId = c.CustomerID
 option (recompile);
 go
 select * into #after_optimizer_info from sys.dm_exec_query_optimizer_info;
