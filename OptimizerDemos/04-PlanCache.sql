@@ -2,7 +2,7 @@
 -- 04-PlanCache.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
--- Version 1.0.1
+-- Version 1.0.2
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -39,7 +39,7 @@ go
 select *
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
-where c.State = 'SD'
+where c.State = 'OK'
 and c.FirstName = 'Mary';
 go
 
@@ -60,7 +60,7 @@ go
 select *
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
-where c.State = 'SD'
+where c.State = 'OK'
 and c.FirstName = 'Mary';
 go
 set quoted_identifier on;

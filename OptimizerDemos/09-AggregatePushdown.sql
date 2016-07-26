@@ -2,7 +2,7 @@
 -- 09-AggregatePushdown.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
--- Version 1.0.1
+-- Version 1.0.2
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -32,7 +32,7 @@ with CustomerCount as
 select c.CustomerID, c.FirstName, c.LastName, cc.NbrOrders
 from CorpDB.dbo.Customer c
 inner join CustomerCount cc on c.CustomerID = cc.CustomerId
-where c.State = 'SD';
+where c.State = 'OK';
 
 -- Get an estimated query plan for the following query.
 -- With a large input from Customer (no predicate), SQL Server decides to first aggregate out of OrderHeader,

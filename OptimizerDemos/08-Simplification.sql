@@ -2,7 +2,7 @@
 -- 08-Simplification.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
--- Version 1.0.1
+-- Version 1.0.2
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -36,13 +36,13 @@ where oh.CustomerId in
 (
 	select c.CustomerId
 	from CorpDB.dbo.Customer c
-	where c.State = 'SD'
+	where c.State = 'OK'
 );
 
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'SD';
+where c.State = 'OK';
 
 -- Another example of the same.
 -- MAXDOP 1 specified to simplify the graphical query plan, but works without MAXDOP as well.
@@ -55,14 +55,14 @@ inner join
 	from CorpDB.dbo.OrderHeader oh
 	inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerId
 ) CustomerOrderView on od.OrderId = CustomerOrderView.OrderId
-where CustomerOrderView.State = 'SD'
+where CustomerOrderView.State = 'OK'
 option (maxdop 1);
 
 select oh.OrderId, oh.CustomerId, od.ProductId
 from CorpDB.dbo.OrderDetail od
 inner join CorpDB.dbo.OrderHeader oh on od.OrderId = oh.OrderId
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'SD'
+where c.State = 'OK'
 option (maxdop 1);
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ option (maxdop 1);
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Get actual execution plan on this query.
--- Note that the Clustered Index Scan on Customer contains the predicate (State = 'SD').
+-- Note that the Clustered Index Scan on Customer contains the predicate (State = 'OK').
 -- Also note that the estimated/actual number of rows is the number after the predicate is applied.
 -- In SQL 2012 SP3 and in SQL 2016, SQL will provide a "Number of Rows" metric to indicate the
 -- number of physical rows read before the predicate.  Not available in SQL 2014 (as of SP1+CU6).
@@ -83,7 +83,7 @@ option (maxdop 1);
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'SD';
+where c.State = 'OK';
 
 -- We can get SQL to separate the predicate.
 -- Now the Clustered Index Scan (Customer) shows Actual Number of Rows = 70,132.
@@ -94,7 +94,7 @@ go
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'SD';
+where c.State = 'OK';
 
 go
 dbcc traceoff (9130);
@@ -171,7 +171,7 @@ create view ImportantCustomers
 as
 select c.CustomerId, c.FirstName, c.LastName, c.State
 from CorpDB.dbo.Customer c
-where c.State = 'SD';
+where c.State = 'OK';
 go
 
 -- Now get an estimated plan on this query.
@@ -224,7 +224,7 @@ if exists (select * from CorpDB.sys.tables where name = 'CheapProducts')
 
 select c.CustomerID, min(c.FirstName) FirstName, min(c.LastName) LastName
 from CorpDB.dbo.Customer c
-where c.State = 'SD'
+where c.State = 'OK'
 group by c.CustomerID;
 
 -- This is simplified to the following.
@@ -232,7 +232,7 @@ group by c.CustomerID;
 
 select c.CustomerID, FirstName, LastName
 from CorpDB.dbo.Customer c
-where c.State = 'SD';
+where c.State = 'OK';
 
 -----------------------------------------------------------------------------------------------------------------------
 -- Convert inner join to outer join
@@ -245,4 +245,4 @@ where c.State = 'SD';
 select *
 from CorpDB.dbo.OrderHeader oh
 left join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
-where c.State = 'SD';
+where c.State = 'OK';

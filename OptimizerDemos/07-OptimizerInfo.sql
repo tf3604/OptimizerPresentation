@@ -2,7 +2,7 @@
 -- 07-OptimizerInfo.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
--- Version 1.0.1
+-- Version 1.0.2
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -91,7 +91,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from dbo.OrderHeader oh
 inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'SD'
+where cust.State = 'OK'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -135,7 +135,7 @@ go
 select oh.OrderId, oh.OrderDate, c.FirstName, c.LastName
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'SD'
+where c.State = 'OK'
 option (recompile);
 go
 select * into #after_optimizer_info from sys.dm_exec_query_optimizer_info;
@@ -174,7 +174,7 @@ with CustomersOfInterest as
 (
 	select c.CustomerID, c.FirstName, c.LastName
 	from CorpDB.dbo.Customer c
-	where c.State = 'SD'
+	where c.State = 'OK'
 )
 select oh.OrderId, oh.OrderDate, c.FirstName, c.LastName
 from CorpDB.dbo.OrderHeader oh

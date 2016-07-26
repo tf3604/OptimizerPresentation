@@ -2,7 +2,7 @@
 -- 10-TransformationStats.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
--- Version 1.0.1
+-- Version 1.0.2
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -95,7 +95,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from dbo.OrderHeader oh
 inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'SD'
+where cust.State = 'OK'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -146,7 +146,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from dbo.OrderHeader oh
 inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'SD'
+where cust.State = 'OK'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId

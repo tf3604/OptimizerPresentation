@@ -2,7 +2,7 @@
 -- 11-ParseTrees.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016, Brian Hansen (brian@tf3604.com).
--- Version 1.0.1
+-- Version 1.0.2
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -34,7 +34,7 @@ option (recompile, querytraceon 8605);
 -- Query with a WHERE clause.
 select c.CustomerID, c.FirstName, c.LastName, c.Address, c.City, c.State
 from CorpDB.dbo.Customer c
-where c.State = 'SD'
+where c.State = 'OK'
 option (recompile, querytraceon 8605);
 
 -- Query with a WHERE clause (LIKE).
@@ -66,7 +66,7 @@ option (recompile, querytraceon 8605);
 -- Query with a DISTINCT.
 select distinct c.FirstName, c.LastName
 from CorpDB.dbo.Customer c
-where c.State = 'SD'
+where c.State = 'OK'
 option (recompile, querytraceon 8605);
 
 -- Query with a UNION.
@@ -140,7 +140,7 @@ where oh.CustomerId in
 (
 	select c.CustomerId
 	from CorpDB.dbo.Customer c
-	where c.State = 'SD'
+	where c.State = 'OK'
 )
 option (recompile, querytraceon 8605, querytraceon 8606);
 
@@ -154,7 +154,7 @@ inner join
 	from CorpDB.dbo.OrderHeader oh
 	inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerId
 ) CustomerOrderView on od.OrderId = CustomerOrderView.OrderId
-where CustomerOrderView.State = 'SD'
+where CustomerOrderView.State = 'OK'
 option (maxdop 1, recompile, querytraceon 8605, querytraceon 8606);
 
 -- Predicate pushdown
@@ -162,7 +162,7 @@ option (maxdop 1, recompile, querytraceon 8605, querytraceon 8606);
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'SD'
+where c.State = 'OK'
 option (recompile, querytraceon 8605, querytraceon 8606);
 
 -- Foreign key table removal
@@ -191,7 +191,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'SD'
+where cust.State = 'OK'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
