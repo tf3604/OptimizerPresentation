@@ -51,8 +51,45 @@ set fmtonly on;
 -- Now when we execute query it gets optimized, but it does not output any rows.
 -- We still don't get an execution plan.
 
-select * from CorpDB.dbo.Customer;
+select *
+from CorpDB.dbo.Customer c
+inner join CorpDB.dbo.OrderHeader oh on oh.CustomerId = c.CustomerID;
 
 -- Cleanup
 
 set fmtonly off;
+
+-- Data type resolution.
+-- Even though CustomerID and OrderId have completely different meanings, we can still union
+-- the results together because they have the same data type (int).
+
+select c.CustomerID
+from CorpDB.dbo.Customer c
+union
+select oh.OrderId
+from CorpDB.dbo.OrderHeader oh;
+
+-- However, FirstName is of type varchar() and OrderDate is datetime2.  These types are
+-- incompatible and we will get an error.  This error happens during the binding process
+-- and before optimization begins.
+
+select c.CustomerID, c.FirstName
+from CorpDB.dbo.Customer c
+union
+select oh.OrderId, oh.OrderDate
+from CorpDB.dbo.OrderHeader oh;
+
+-- Msg 241, Level 16, State 1, Line ##
+-- Conversion failed when converting date and/or time from character string.
+
+-- Aggregate binding.
+-- This query will generate an error during the binding process because SQL knows that
+-- "FirstName" is not a valid column because it is neither in the group by clause nor
+-- is it an aggregate.
+
+select c.LastName, c.FirstName, count(*) NbrCustomers
+from CorpDB.dbo.Customer c
+group by c.LastName
+
+-- Msg 8120, Level 16, State 1, Line ##
+-- Column 'CorpDB.dbo.Customer.FirstName' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.
