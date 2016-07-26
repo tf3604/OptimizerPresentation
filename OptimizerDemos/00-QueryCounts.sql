@@ -14,4 +14,30 @@ select count_big(*)
 from CorpDB.dbo.OrderHeader oh
 cross join CorpDB.dbo.OrderDetail od
 cross join CorpDb.dbo.Customer c
-where 
+where oh.OrderId = od.OrderId;
+
+select count_big(*)
+from CorpDB.dbo.OrderHeader oh
+cross join CorpDB.dbo.OrderDetail od
+cross join CorpDb.dbo.Customer c
+where oh.OrderId = od.OrderId
+and oh.CustomerId = c.CustomerID;
+
+select count_big(*)
+from CorpDB.dbo.OrderHeader oh
+cross join CorpDB.dbo.OrderDetail od
+cross join CorpDb.dbo.Customer c
+where oh.OrderId = od.OrderId
+and oh.CustomerId = c.CustomerID
+and c.State = 'OK'
+group by od.ProductId;
+
+select count_big(*)
+from CorpDB.dbo.OrderHeader oh
+cross join CorpDB.dbo.OrderDetail od
+cross join CorpDb.dbo.Customer c
+where oh.OrderId = od.OrderId
+and oh.CustomerId = c.CustomerID
+and c.State = 'OK'
+group by od.ProductId
+having sum(Quantity) >= 20;
