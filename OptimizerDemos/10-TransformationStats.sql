@@ -72,8 +72,6 @@ go
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Now let's try this on one of our queries.
--- Turn on actual execution plan first.
--- Cost of the query is 5.294
 
 -----------------------------------------------------------------------------------------------------------------------
 -- Begin
@@ -92,9 +90,9 @@ go
 -- Insert query of interest here
 -----------------------------------------------------------------------------------------------------------------------
 select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
-from dbo.OrderHeader oh
-inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
-inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
+inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
 where cust.State = 'OK'
 group by od.ProductId
 having sum(od.Quantity) >= 20
@@ -116,15 +114,40 @@ go
 -- End
 -----------------------------------------------------------------------------------------------------------------------
 
+-- Now get an estimated execution plan on this query.  Note the plan cost.
+
+select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
+inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
+where cust.State = 'OK'
+group by od.ProductId
+having sum(od.Quantity) >= 20
+order by od.ProductId
+option (recompile);
+
 -- Notice that in the execution plan we had a couple of hash joins and one hash aggregation.  Suppose we want
 -- to try the query again and see what happens if we don't allow SQL to consider hash joins and aggregates.
 -- We eliminate the hash join and aggregate, and instead use merge join and stream aggregate.  However, a
 -- couple of sorts have to be introduced to support this operator.
--- Now the query cost has jumped to 17.94.
 
 dbcc ruleoff ('JNtoHS');
 dbcc ruleoff ('GbAggToHS');
 dbcc ruleoff ('HJwBMtoHS');
+go
+
+-- Get the estimated query plan again.
+
+select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
+inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
+where cust.State = 'OK'
+group by od.ProductId
+having sum(od.Quantity) >= 20
+order by od.ProductId
+option (recompile);
+
 go
 -----------------------------------------------------------------------------------------------------------------------
 -- Begin
@@ -143,9 +166,9 @@ go
 -- Insert query of interest here
 -----------------------------------------------------------------------------------------------------------------------
 select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
-from dbo.OrderHeader oh
-inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
-inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
+inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
 where cust.State = 'OK'
 group by od.ProductId
 having sum(od.Quantity) >= 20

@@ -65,6 +65,25 @@ inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
 where c.State = 'OK'
 option (maxdop 1);
 
+-- How about EXISTS?  Get an estimated query plan on these two queries.
+
+select c.CustomerID, c.FirstName, c.LastName
+from CorpDB.dbo.Customer c
+where exists
+(
+	select *
+	from CorpDB.dbo.OrderHeader oh
+	where oh.CustomerId = c.CustomerId
+);
+
+select c.CustomerID, c.FirstName, c.LastName
+from CorpDB.dbo.Customer c
+inner join
+(
+	select distinct CustomerId
+	from CorpDB.dbo.OrderHeader oh
+) oh on oh.CustomerId = c.CustomerID;
+
 -----------------------------------------------------------------------------------------------------------------------
 -- Predicate pushdown.
 -----------------------------------------------------------------------------------------------------------------------
