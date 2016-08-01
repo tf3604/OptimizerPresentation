@@ -22,7 +22,7 @@
 
 -- Semi join.  Output is only from one of the tables (Customer); second table (OrderHeader) is used only
 -- to do a logical correlation.
--- T-SQL does not have explicit syntax to write a semi-join, but we can accomplish it using an EXISTS statement.
+-- T-SQL does not have explicit syntax to write a semi-join, but we can accomplish it using an EXISTS statement or an IN clause.
 -- Find customers that have orders.
 select *
 from CorpDB.dbo.Customer c
@@ -33,9 +33,18 @@ where exists
 	where oh.CustomerId = c.CustomerId
 );
 
+select *
+from CorpDB.dbo.Customer c
+where c.CustomerID in
+(
+	select oh.CustomerId
+	from CorpDB.dbo.OrderHeader oh
+);
+
 -- Anti-semi join.  Output is only from one of the tables (Customer); second table (OrderHeader) is used only
 -- to do a logical correlation.
--- T-SQL does not have explicit syntax to write a semi-join, but we can accomplish it using a NOT EXISTS statement.
+-- T-SQL does not have explicit syntax to write a semi-join, but we can accomplish it using a NOT EXISTS or NOT IN statement.
+-- In this example, OrderHeader.CustomerId is NOT NULL, but if not we need to exclude NULLs from the IN clause.
 -- Find customers without orders.
 select *
 from CorpDB.dbo.Customer c
@@ -44,4 +53,12 @@ where not exists
 	select *
 	from CorpDB.dbo.OrderHeader oh
 	where oh.CustomerId = c.CustomerId
+);
+
+select *
+from CorpDB.dbo.Customer c
+where c.CustomerID not in
+(
+	select oh.CustomerId
+	from CorpDB.dbo.OrderHeader oh
 );
