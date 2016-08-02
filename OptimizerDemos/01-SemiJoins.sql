@@ -62,3 +62,16 @@ where c.CustomerID not in
 	select oh.CustomerId
 	from CorpDB.dbo.OrderHeader oh
 );
+
+-- The EXCEPT table operator is implemented using an anti-semi join.
+-- Get an estimated query plan for this query.
+
+select oh.CustomerId
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
+where od.ProductId = 125
+except
+select oh.CustomerId
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
+where od.ProductId = 59;
