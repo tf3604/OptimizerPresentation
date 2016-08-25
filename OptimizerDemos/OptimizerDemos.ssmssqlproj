@@ -2,118 +2,99 @@
 <SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="OptimizerDemos">
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
-      <Items>
-        <ConnectionNode Name="(local)\sql2014:HANSENFAM\hansen">
-          <Created>2016-06-24T15:39:57.7090314-05:00</Created>
-          <Type>SQL</Type>
-          <Server>(local)\sql2014</Server>
-          <UserName />
-          <Authentication>Windows Authentication</Authentication>
-          <InitialDB />
-          <LoginTimeout>15</LoginTimeout>
-          <ExecutionTimeout>0</ExecutionTimeout>
-          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
-          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
-        </ConnectionNode>
-        <ConnectionNode Name="(local)\sql2016:HANSENFAM\hansen">
-          <Created>2016-06-24T15:41:25.5787496-05:00</Created>
-          <Type>SQL</Type>
-          <Server>(local)\sql2016</Server>
-          <UserName />
-          <Authentication>Windows Authentication</Authentication>
-          <InitialDB />
-          <LoginTimeout>15</LoginTimeout>
-          <ExecutionTimeout>0</ExecutionTimeout>
-          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
-          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
-        </ConnectionNode>
-      </Items>
+      <Items />
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="00-Prep.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>00-Prep.sql</FullPath>
         </FileNode>
         <FileNode Name="00-QueryCounts.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>00-QueryCounts.sql</FullPath>
         </FileNode>
         <FileNode Name="01-SemiJoins.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>01-SemiJoins.sql</FullPath>
         </FileNode>
         <FileNode Name="02-ParsingAndBinding.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>02-ParsingAndBinding.sql</FullPath>
         </FileNode>
         <FileNode Name="03-TrivialPlans.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>03-TrivialPlans.sql</FullPath>
         </FileNode>
         <FileNode Name="04-PlanCache.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>04-PlanCache.sql</FullPath>
         </FileNode>
         <FileNode Name="05-IndexIntersection.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>05-IndexIntersection.sql</FullPath>
         </FileNode>
         <FileNode Name="06-BushyTrees.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>06-BushyTrees.sql</FullPath>
         </FileNode>
         <FileNode Name="07-OptimizerInfo.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>07-OptimizerInfo.sql</FullPath>
         </FileNode>
         <FileNode Name="08-Simplification.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>08-Simplification.sql</FullPath>
         </FileNode>
         <FileNode Name="09-AggregatePushdown.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>09-AggregatePushdown.sql</FullPath>
         </FileNode>
         <FileNode Name="10-TransformationStats.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>10-TransformationStats.sql</FullPath>
         </FileNode>
         <FileNode Name="11-ParseTrees.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>11-ParseTrees.sql</FullPath>
         </FileNode>
         <FileNode Name="12-Memos.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>12-Memos.sql</FullPath>
+        </FileNode>
+        <FileNode Name="13-FromTheTrenches.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>13-FromTheTrenches.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
