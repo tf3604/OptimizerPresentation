@@ -130,6 +130,14 @@ inner join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
 group by c.CustomerID
 option (recompile, querytraceon 7352);
 
+-- Query that shows join-collapse
+select oh.OrderId, oh.OrderDate, c.CustomerID, c.FirstName, c.LastName,
+	od.OrderId, od.Quantity, od.UnitPrice
+from CorpDB.dbo.OrderHeader oh
+inner join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
+inner join CorpDB.dbo.OrderDetail od on od.OrderId = oh.OrderId
+option (recompile, querytraceon 8605, querytraceon 8606);
+
 -- Let's look at some of the queries from the simplification demos.
 
 -- Subquery to inner join
