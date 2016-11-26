@@ -20,8 +20,8 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="00-Prep.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sql2016:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sql2016</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>00-Prep.sql</FullPath>
         </FileNode>
