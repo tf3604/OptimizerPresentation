@@ -33,7 +33,7 @@ option (recompile, querytraceon 8757, querytraceon 8608);
 
 select *
 from CorpDB.dbo.Customer c
-where c.State = 'NE'
+where c.State = 'WI'
 option (recompile, querytraceon 8757, querytraceon 8608);
 
 -- Join to another table (TF8757 no longer required because this query is not trivial).
@@ -41,14 +41,14 @@ option (recompile, querytraceon 8757, querytraceon 8608);
 select *
 from CorpDB.dbo.Customer c
 inner join CorpDB.dbo.OrderHeader oh on oh.CustomerId = c.CustomerID
-where c.State = 'NE'
+where c.State = 'WI'
 option (recompile, querytraceon 8608);
 
 -- TF8615 will output the final memo structure.
 select *
 from CorpDB.dbo.Customer c
 inner join CorpDB.dbo.OrderHeader oh on oh.CustomerId = c.CustomerID
-where c.State = 'NE'
+where c.State = 'WI'
 option (recompile, querytraceon 8615);
 
 -- Same query.  Get an estimated query plan.
@@ -56,7 +56,7 @@ option (recompile, querytraceon 8615);
 select *
 from CorpDB.dbo.Customer c
 inner join CorpDB.dbo.OrderHeader oh on oh.CustomerId = c.CustomerID
-where c.State = 'NE'
+where c.State = 'WI'
 option (recompile, querytraceon 8615, querytraceon 9130);
 
 -- More complex query
@@ -64,7 +64,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -76,7 +76,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -87,7 +87,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -98,7 +98,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -109,7 +109,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -120,7 +120,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -131,7 +131,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -142,7 +142,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -153,7 +153,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -164,7 +164,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -175,7 +175,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -186,7 +186,7 @@ select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'NE'
+where cust.State = 'WI'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
