@@ -96,11 +96,17 @@
           <AssociatedConnUserName />
           <FullPath>13-DigDeeper.sql</FullPath>
         </FileNode>
-        <FileNode Name="14-FromTheTrenches.sql">
+        <FileNode Name="14-TF2363.sql">
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
-          <FullPath>14-FromTheTrenches.sql</FullPath>
+          <FullPath>14-TF2363.sql</FullPath>
+        </FileNode>
+        <FileNode Name="15-FromTheTrenches.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>15-FromTheTrenches.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
