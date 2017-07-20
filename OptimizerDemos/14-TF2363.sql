@@ -2,7 +2,7 @@
 -- 14-TF2363.sql
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016-2017-2017, Brian Hansen (brian@tf3604.com).
--- Version 1.0.5
+-- Version 1.0.6
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
@@ -28,7 +28,7 @@ select top 5 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from dbo.OrderHeader oh
 inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'WI'
+where cust.State = 'NE'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
