@@ -32,7 +32,7 @@ with CustomerCount as
 select c.CustomerID, c.FirstName, c.LastName, cc.NbrOrders
 from CorpDB.dbo.Customer c
 inner join CustomerCount cc on c.CustomerID = cc.CustomerId
-where c.State = 'LA';
+where c.State = 'WI';
 
 -- Get an estimated query plan for the following query.
 -- With a large input from Customer (no predicate), SQL Server decides to first aggregate out of OrderHeader,
