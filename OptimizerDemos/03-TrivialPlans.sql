@@ -33,7 +33,7 @@ from CorpDB.dbo.Customer c;
 
 select *
 from CorpDB.dbo.Customer c
-where c.State = 'WI';
+where c.State = 'IL';
 
 -- Now let's add an index on State.
 
@@ -48,7 +48,7 @@ create index idx_Customer__State on CorpDB.dbo.Customer (State);
 
 select *
 from CorpDB.dbo.Customer c
-where c.State = 'WI';
+where c.State = 'IL';
 
 -- Cleanup
 
