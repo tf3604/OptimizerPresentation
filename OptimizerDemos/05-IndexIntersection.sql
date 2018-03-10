@@ -72,7 +72,7 @@ from CorpDB.dbo.Customer c
 where c.FirstName = 'William'
 and c.LastName = 'Smith'
 and c.City = 'Chicago'
-and c.State = 'IL';
+and c.State = 'CO';
 
 -- Cleanup
 

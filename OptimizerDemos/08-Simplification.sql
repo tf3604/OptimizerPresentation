@@ -36,13 +36,13 @@ where oh.CustomerId in
 (
 	select c.CustomerId
 	from CorpDB.dbo.Customer c
-	where c.State = 'IL'
+	where c.State = 'CO'
 );
 
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'IL';
+where c.State = 'CO';
 
 -- Another example of the same.
 -- MAXDOP 1 specified to simplify the graphical query plan, but works without MAXDOP as well.
@@ -55,14 +55,14 @@ inner join
 	from CorpDB.dbo.OrderHeader oh
 	inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerId
 ) CustomerOrderView on od.OrderId = CustomerOrderView.OrderId
-where CustomerOrderView.State = 'IL'
+where CustomerOrderView.State = 'CO'
 option (maxdop 1);
 
 select oh.OrderId, oh.CustomerId, od.ProductId
 from CorpDB.dbo.OrderDetail od
 inner join CorpDB.dbo.OrderHeader oh on od.OrderId = oh.OrderId
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'IL'
+where c.State = 'CO'
 option (maxdop 1);
 
 -- How about EXISTS?  Get an estimated query plan on these two queries.
@@ -89,7 +89,7 @@ inner join
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Get actual execution plan on this query.
--- Note that the Clustered Index Scan on Customer contains the predicate (State = 'IL').
+-- Note that the Clustered Index Scan on Customer contains the predicate (State = 'CO').
 -- Also note that the estimated/actual number of rows is the number after the predicate is applied.
 -- In SQL 2012 SP3 and in SQL 2016, SQL will provide a "Number of Rows" metric to indicate the
 -- number of physical rows read before the predicate.  Not available in SQL 2014 (as of SP1+CU6).
@@ -102,7 +102,7 @@ inner join
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'IL';
+where c.State = 'CO';
 
 -- We can get SQL to separate the predicate.
 -- Now the Clustered Index Scan (Customer) shows Actual Number of Rows = 70,132.
@@ -113,7 +113,7 @@ go
 select oh.OrderId, oh.OrderDate, oh.CustomerId
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'IL';
+where c.State = 'CO';
 
 go
 dbcc traceoff (9130);
@@ -190,7 +190,7 @@ create view ImportantCustomers
 as
 select c.CustomerId, c.FirstName, c.LastName, c.State
 from CorpDB.dbo.Customer c
-where c.State = 'IL';
+where c.State = 'CO';
 go
 
 -- Now get an estimated plan on this query.
@@ -243,7 +243,7 @@ if exists (select * from CorpDB.sys.tables where name = 'CheapProducts')
 
 select c.CustomerID, min(c.FirstName) FirstName, min(c.LastName) LastName
 from CorpDB.dbo.Customer c
-where c.State = 'IL'
+where c.State = 'CO'
 group by c.CustomerID;
 
 -- This is simplified to the following.
@@ -251,7 +251,7 @@ group by c.CustomerID;
 
 select c.CustomerID, FirstName, LastName
 from CorpDB.dbo.Customer c
-where c.State = 'IL';
+where c.State = 'CO';
 
 -----------------------------------------------------------------------------------------------------------------------
 -- Convert inner join to outer join
@@ -264,4 +264,4 @@ where c.State = 'IL';
 select *
 from CorpDB.dbo.OrderHeader oh
 left join CorpDB.dbo.Customer c on c.CustomerID = oh.CustomerId
-where c.State = 'IL';
+where c.State = 'CO';

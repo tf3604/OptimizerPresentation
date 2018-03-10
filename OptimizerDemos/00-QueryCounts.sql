@@ -29,7 +29,7 @@ cross join CorpDB.dbo.OrderDetail od
 cross join CorpDb.dbo.Customer c
 where oh.OrderId = od.OrderId
 and oh.CustomerId = c.CustomerID
-and c.State = 'IL'
+and c.State = 'CO'
 group by od.ProductId;
 
 select count_big(*)
@@ -38,6 +38,6 @@ cross join CorpDB.dbo.OrderDetail od
 cross join CorpDb.dbo.Customer c
 where oh.OrderId = od.OrderId
 and oh.CustomerId = c.CustomerID
-and c.State = 'IL'
+and c.State = 'CO'
 group by od.ProductId
 having sum(Quantity) >= 20;
