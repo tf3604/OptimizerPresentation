@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------
 -- 02-ParsingAndBinding.sql
 -----------------------------------------------------------------------------------------------------------------------
--- Copyright 2016-2017, Brian Hansen (brian@tf3604.com).
--- Version 1.0.11
+-- Copyright 2016-2018, Brian Hansen (brian@tf3604.com).
+-- Version 1.0.12
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
