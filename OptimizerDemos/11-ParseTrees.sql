@@ -195,7 +195,7 @@ option (recompile, querytraceon 8605);
 -- Additional features in SSPTV: Optimizer Info and Transformation Stats
 set fmtonly off;
 
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID

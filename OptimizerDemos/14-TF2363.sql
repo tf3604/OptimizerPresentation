@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------------------------------------
 -- 14-TF2363.sql
 -----------------------------------------------------------------------------------------------------------------------
--- Copyright 2016-2018-2017, Brian Hansen (brian@tf3604.com).
+-- Copyright 2016-2018, Brian Hansen (brian@tf3604.com).
 -- Version 1.0.12
 -- Look for the most recent version of this script at www.tf3604.com/optimizer.
 --
@@ -24,7 +24,7 @@ dbcc traceon (3604);
 
 use CorpDB;
 
-select top 5 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (5) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from dbo.OrderHeader oh
 inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID

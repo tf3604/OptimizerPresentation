@@ -89,7 +89,7 @@ go
 -----------------------------------------------------------------------------------------------------------------------
 -- Insert query of interest here
 -----------------------------------------------------------------------------------------------------------------------
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -116,7 +116,7 @@ go
 
 -- Now get an estimated execution plan on this query.  Note the plan cost.
 
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -138,7 +138,7 @@ go
 
 -- Get the estimated query plan again.
 
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -165,7 +165,7 @@ go
 -----------------------------------------------------------------------------------------------------------------------
 -- Insert query of interest here
 -----------------------------------------------------------------------------------------------------------------------
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID

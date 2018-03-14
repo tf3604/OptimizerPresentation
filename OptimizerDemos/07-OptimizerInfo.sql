@@ -87,7 +87,7 @@ go
 -----------------------------------------------------------------------------------------------------------------------
 -- Insert query of interest here
 -----------------------------------------------------------------------------------------------------------------------
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from dbo.OrderHeader oh
 inner join dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join dbo.Customer cust on oh.CustomerId = cust.CustomerID

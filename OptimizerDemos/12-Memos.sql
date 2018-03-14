@@ -60,7 +60,7 @@ where c.State = 'CO'
 option (recompile, querytraceon 8615, querytraceon 9130);
 
 -- More complex query
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -72,7 +72,7 @@ option (recompile, querytraceon 8615);
 
 -- Related: TF8675 will show optimization phases and search times
 -- Note that the query runs Search 1 twice (once for serial, once for parallel)
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -83,7 +83,7 @@ order by od.ProductId
 option (recompile, querytraceon 8675);
 
 -- Related: TF8677 will force Search 2 to run
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -94,7 +94,7 @@ order by od.ProductId
 option (recompile, querytraceon 8675, querytraceon 8677);
 
 -- TF2372 will display information about memory usage during optimization
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -105,7 +105,7 @@ order by od.ProductId
 option (recompile, querytraceon 2372);
 
 -- TF2373 will display information about memory usage related to property derivation
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -116,7 +116,7 @@ order by od.ProductId
 option (recompile, querytraceon 2373);
 
 -- Combine the two for a more complete picture.
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -127,7 +127,7 @@ order by od.ProductId
 option (recompile, querytraceon 2372, querytraceon 2373);
 
 -- TF8619 shows more complex rules that are applied
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -138,7 +138,7 @@ order by od.ProductId
 option (recompile, querytraceon 8619);
 
 -- Combine with TF8620 to show some memo-related information
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -149,7 +149,7 @@ order by od.ProductId
 option (recompile, querytraceon 8619, querytraceon 8620);
 
 -- TF8621 shows query tree after applying rules
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -160,7 +160,7 @@ order by od.ProductId
 option (recompile, querytraceon 8621);
 
 -- Combine TF8619/8620/8621 to get a fuller picture
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -171,7 +171,7 @@ order by od.ProductId
 option (recompile, querytraceon 8619, querytraceon 8620, querytraceon 8621);
 
 -- TF8609 to show task information
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
@@ -182,7 +182,7 @@ order by od.ProductId
 option (recompile, querytraceon 8609);
 
 -- Combine TF2372/2373/8619/8620/8621 to get very wide picture
-select top 10 od.ProductId, sum(od.Quantity) - 20 ExcessOrders
+select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
