@@ -41,6 +41,16 @@ where c.CustomerID in
 	from CorpDB.dbo.OrderHeader oh
 );
 
+-- We can also write this with an inner join, so long as we take care that any given row
+-- from Customer will appear no more than once.
+select *
+from CorpDB.dbo.Customer c
+inner join
+(
+	select distinct CustomerId
+	from CorpDB.dbo.OrderHeader
+) oh on c.CustomerID = oh.CustomerId;
+
 -- Anti-semi join.  Output is only from one of the tables (Customer); second table (OrderHeader) is used only
 -- to do a logical correlation.
 -- T-SQL does not have explicit syntax to write a semi-join, but we can accomplish it using a NOT EXISTS or NOT IN statement.
