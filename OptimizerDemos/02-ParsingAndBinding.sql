@@ -1,23 +1,8 @@
 -----------------------------------------------------------------------------------------------------------------------
 -- 02-ParsingAndBinding.sql
------------------------------------------------------------------------------------------------------------------------
--- Copyright 2016-2018, Brian Hansen (brian@tf3604.com).
 -- Version 1.0.12
--- Look for the most recent version of this script at www.tf3604.com/optimizer.
---
--- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
--- documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
--- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
--- and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
--- 
--- The above copyright notice and this permission notice shall be included in all copies or substantial portions 
--- of the Software.
--- 
--- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
--- TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
--- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
--- CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
--- DEALINGS IN THE SOFTWARE.
+-- Look for the most recent version of this script at www.tf3604.com/optimizer
+-- MIT License.  See the bottom of this file for details.
 -----------------------------------------------------------------------------------------------------------------------
 
 -- Turn on PARSEONLY.  This directs the query processor to only execute the "parse" phase.
@@ -31,7 +16,7 @@ set parseonly on;
 select * from CorpDB.dbo.Customer;
 
 -- The following is a valid query but cannot be executed because the table doesn't exist.  However, it
--- will still run without error because it is syntactically correct.
+-- is syntactically correct.
 
 select NonExistantColumn from NonExistantTable;
 
@@ -93,3 +78,21 @@ group by c.LastName
 
 -- Msg 8120, Level 16, State 1, Line ##
 -- Column 'CorpDB.dbo.Customer.FirstName' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.
+
+-----------------------------------------------------------------------------------------------------------------------
+-- Copyright 2016-2018, Brian Hansen (brian at tf3604.com).
+--
+-- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+-- documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+-- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
+-- and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+-- 
+-- The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+-- of the Software.
+-- 
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+-- TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+-- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+-- CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+-- DEALINGS IN THE SOFTWARE.
+-----------------------------------------------------------------------------------------------------------------------
