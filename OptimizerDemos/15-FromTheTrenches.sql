@@ -68,6 +68,24 @@ group by o.OrderId;
 -- For 12M to 15M rows, it would be huge deal.  SQL know this, and so opts to instead do a full table
 -- scan.
 
+if object_id('tempdb.dbo.#Order') is not null drop table #Order;
+create table #Order (OrderId int);
+
+insert #Order (OrderId)
+select o.OrderId
+from dbo.OrderHeader o
+where o.Status = 2
+and o.Batch is null;
+
+select o.OrderId, max(rt.RelatedDate)
+from #Order tmp
+inner join OrderHeader o on tmp.OrderId = o.OrderId
+inner join RelatedTable rt on o.OrderId = rt.OrderId
+WHERE cast(o.FulfulledDate as date) = cast(rt.RelatedDate as date)
+	and o.FulfilledDate >= '2018-03-01'
+	and o.FulfilledDate < '2018-04-01'
+GROUP BY o.OrderId;
+
 -----------------------------------------------------------------------------------------------------------------------
 -- Copyright 2016-2018, Brian Hansen (brian at tf3604.com).
 --
