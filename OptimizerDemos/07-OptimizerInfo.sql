@@ -76,7 +76,7 @@ select top (10) od.ProductId, sum(od.Quantity) - 20 ExcessOrders
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.OrderDetail od on oh.OrderId = od.OrderId
 inner join CorpDB.dbo.Customer cust on oh.CustomerId = cust.CustomerID
-where cust.State = 'CO'
+where cust.State = 'IN'
 group by od.ProductId
 having sum(od.Quantity) >= 20
 order by od.ProductId
@@ -120,7 +120,7 @@ go
 select oh.OrderId, oh.OrderDate, c.FirstName, c.LastName
 from CorpDB.dbo.OrderHeader oh
 inner join CorpDB.dbo.Customer c on oh.CustomerId = c.CustomerID
-where c.State = 'CO'
+where c.State = 'IN'
 option (recompile);
 go
 select * into #after_optimizer_info from sys.dm_exec_query_optimizer_info;
@@ -159,7 +159,7 @@ with CustomersOfInterest as
 (
 	select c.CustomerID, c.FirstName, c.LastName
 	from CorpDB.dbo.Customer c
-	where c.State = 'CO'
+	where c.State = 'IN'
 )
 select oh.OrderId, oh.OrderDate, c.FirstName, c.LastName
 from CorpDB.dbo.OrderHeader oh
