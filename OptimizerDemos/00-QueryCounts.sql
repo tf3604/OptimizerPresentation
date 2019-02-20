@@ -29,8 +29,20 @@ cross join CorpDB.dbo.OrderDetail od
 cross join CorpDb.dbo.Customer c
 where oh.OrderId = od.OrderId
 and oh.CustomerId = c.CustomerID
-and c.State = 'ND'
-group by od.ProductId;
+and c.State = 'ND';
+
+select count_big(*)
+from
+(
+	select count_big(*) cnt
+	from CorpDB.dbo.OrderHeader oh
+	cross join CorpDB.dbo.OrderDetail od
+	cross join CorpDb.dbo.Customer c
+	where oh.OrderId = od.OrderId
+	and oh.CustomerId = c.CustomerID
+	and c.State = 'ND'
+	group by od.ProductId
+) gb;
 
 select count_big(*)
 from CorpDB.dbo.OrderHeader oh
