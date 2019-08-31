@@ -56,10 +56,27 @@ select c.FirstName, c.LastName
 from CorpDB.dbo.Customer c
 where c.LastName = 'Hansen';
 
+-- How does the presence of another index affect this?
+-- Let's re-add the index on State.
+
+if exists (select * from CorpDB.sys.indexes where name = 'idx_Customer__State')
+	drop index dbo.Customer.idx_Customer__State;
+
+create index idx_Customer__State on CorpDB.dbo.Customer (State);
+
+-- Try it again.
+-- This give the optimizer choices, so it will go through full optimization.
+
+select c.FirstName, c.LastName
+from CorpDB.dbo.Customer c
+where c.LastName = 'Hansen';
+
 -- Cleanup
 
 if exists (select * from CorpDB.sys.indexes where name = 'idx_Customer__LastName')
 	drop index dbo.Customer.idx_Customer__LastName;
+if exists (select * from CorpDB.sys.indexes where name = 'idx_Customer__State')
+	drop index dbo.Customer.idx_Customer__State;
 
 -- Example of a plan with multiple tables but which is still trivial.
 -- This is because simplification rules optimize away all but the OrderDetail table,
