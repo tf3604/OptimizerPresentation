@@ -60,6 +60,23 @@ and c.LastName = 'Smith'
 and c.City = 'Chicago'
 and c.State = 'IL';
 
+-- Change the City index to include Address and State.
+
+drop index dbo.Customer.idx_Customer_City;
+go
+create nonclustered index idx_Customer_City on CorpDB.dbo.Customer (City)
+include (Address, State);
+
+-- Now the query does an intersection of 3 nonclustered indexes and does
+-- not touch the clustered index at all.
+
+select c.CustomerID, c.FirstName, c.LastName, c.Address, c.City, c.State
+from CorpDB.dbo.Customer c
+where c.FirstName = 'Lynn'
+and c.LastName = 'Smith'
+and c.City = 'Chicago'
+and c.State = 'IL';
+
 -- Cleanup
 
 drop index dbo.Customer.idx_Customer_LastName;
