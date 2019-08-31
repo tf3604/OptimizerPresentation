@@ -40,6 +40,27 @@ where c.State = 'AZ';
 if exists (select * from CorpDB.sys.indexes where name = 'idx_Customer__State')
 	drop index dbo.Customer.idx_Customer__State;
 
+-- Even if the optimizer has choices, it can still choose a trivial plan.
+-- Let's create an index on last name including first name.
+
+if exists (select * from CorpDB.sys.indexes where name = 'idx_Customer__LastName')
+	drop index dbo.Customer.idx_Customer__LastName;
+
+create index idx_Customer__LastName on CorpDB.dbo.Customer (LastName)
+include (FirstName);
+
+-- Get estimated plan on a query that can use this as a covering index.
+-- This will be a trivial plan.
+
+select c.FirstName, c.LastName
+from CorpDB.dbo.Customer c
+where c.LastName = 'Hansen';
+
+-- Cleanup
+
+if exists (select * from CorpDB.sys.indexes where name = 'idx_Customer__LastName')
+	drop index dbo.Customer.idx_Customer__LastName;
+
 -- Example of a plan with multiple tables but which is still trivial.
 -- This is because simplification rules optimize away all but the OrderDetail table,
 -- so this query is essentially:
