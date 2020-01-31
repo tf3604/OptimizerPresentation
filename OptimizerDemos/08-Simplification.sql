@@ -218,6 +218,31 @@ where p.UnitPrice > 50.00;
 if exists (select * from CorpDB.sys.tables where name = 'CheapProducts')
 	drop table CheapProducts;
 
+-- How about if we use a scalar UDF?
+if exists (select * from CorpDB.sys.objects o where type = 'FN' and name = 'fn_StateName')
+	drop function dbo.fn_StateName;
+go
+
+create function dbo.fn_StateName(@customerID int)
+returns varchar(50)
+as
+begin
+	return 'OR';
+end
+go
+
+select c.*
+from CorpDB.dbo.Customer c
+where c.State = 'MO'
+and c.State = dbo.fn_StateName(c.CustomerID);
+
+go
+
+-- Cleanup
+if exists (select * from CorpDB.sys.objects o where type = 'FN' and name = 'fn_StateName')
+	drop function dbo.fn_StateName;
+go
+
 -----------------------------------------------------------------------------------------------------------------------
 -- Aggregates on unique keys
 -----------------------------------------------------------------------------------------------------------------------
