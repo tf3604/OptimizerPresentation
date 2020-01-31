@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------------------------------------------------
 -- 04-PlanCache.sql
--- Version 1.0.16
+-- Version 1.0.17
 -- Look for the most recent version of this script at www.tf3604.com/optimizer
 -- MIT License.  See the bottom of this file for details.
 -----------------------------------------------------------------------------------------------------------------------
