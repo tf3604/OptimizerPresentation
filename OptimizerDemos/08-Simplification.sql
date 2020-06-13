@@ -175,7 +175,7 @@ create view ImportantCustomers
 as
 select c.CustomerId, c.FirstName, c.LastName, c.State
 from CorpDB.dbo.Customer c
-where c.State = 'MO';
+where c.State = 'CA';
 go
 
 -- Now get an estimated plan on this query.
@@ -184,7 +184,7 @@ go
 select c.*
 from CorpDB.dbo.ImportantCustomers c
 inner join CorpDB.dbo.OrderHeader oh on oh.CustomerId = c.CustomerId
-where c.State = 'CA';
+where c.State = 'MO';
 
 -- Cleanup
 if exists (select * from CorpDB.sys.views where name = 'ImportantCustomers')
