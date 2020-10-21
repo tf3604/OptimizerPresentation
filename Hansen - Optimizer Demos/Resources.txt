@@ -1,0 +1,45 @@
+------------------------------------------------------------------------------------------
+History of SQL Server’s Optimizer
+------------------------------------------------------------------------------------------
+Volcano Optimizer (April 1993) (PDF)
+Goetz Graefe, William J. McKenna
+Based on Graefe’s earlier Exodus Optimizer
+http://www.seas.upenn.edu/~zives/03s/cis650/P209.PDF
+----------------------------------------
+Cascades Framework (1995) (PDF)
+Goetz Graefe
+Refinement of the Volcano Optimizer
+Basis for rewritten optimizer in SQL Server 7.0
+Major innovation: the memo structure
+http://www.cse.iitb.ac.in/infolab/Data/Courses/CS632/2013/Papers/Cascades-graefe.pdf
+https://www.csd.uoc.gr/~hy460/pdf/CascadesFrameworkForQueryOptimization.pdf
+
+------------------------------------------------------------------------------------------
+Blogs, etc., Related to the Optimizer
+------------------------------------------------------------------------------------------
+Benjamin Nevarez
+Blog: http://www.benjaminnevarez.com/
+Free e-book (courtesy of Red-Gate): https://www.red-gate.com/library/inside-the-sql-server-query-optimizer
+----------------------------------------
+Paul White
+Page Free Space blog: https://www.sql.kiwi/
+SQL Performance blog: http://sqlperformance.com/author/paulwhitenzgmail-com
+Query Optimizer Deep Dive series: https://www.sql.kiwi/2012/04/query-optimizer-deep-dive-part-1.html
+----------------------------------------
+Conor Cunningham
+Blog: http://www.sqlskills.com/blogs/conor/
+Microsoft SQL Server 2012 Internals (Kalen Delaney, editor), chapter 11
+SQLBits Session: https://www.sqlbits.com/Sessions/Event6/inside_the_sql_server_query_optimizer
+
+------------------------------------------------------------------------------------------
+Additional Resources
+------------------------------------------------------------------------------------------
+Database used in demo scripts: https://www.tf3604.com/wp-content/uploads/optimizer/CorpDB.bak.zip
+As of November 2020, the most recent version of this database is from 4 January 2017 and the download
+is about 19 MB.
+(SQL Server 2012 backup. When you restore, be sure to upgrade the compatibility level.)
+----------------------------------------
+SQL Server Query Tree Viewer: https://www.tf3604.com/ssqtv
+Completely free to use, no registration required.
+Contributions / suggestions welcome.
+
